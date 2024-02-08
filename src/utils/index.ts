@@ -1,0 +1,1 @@
+export {parserAndRenderer} from './parserAndRenderer';
