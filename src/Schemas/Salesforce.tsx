@@ -4,9 +4,9 @@ export const UISchemaSalesforce = {
     body: [
       {
         type: "Table",
-        $data: "${messages}",
         rows: [
           {
+            $data: "${messages}",
             type: "TableRow",
             cells: [
               {
