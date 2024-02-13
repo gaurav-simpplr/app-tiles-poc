@@ -11,7 +11,7 @@ import { TextBlock, ImageBlock, Container } from "./Components";
 import * as ACData from "adaptivecards-templating";
 import { WORKDAY, SALESFORCE, MOODLE_COURSES } from "./Data";
 import { UISchemaMoodle, UISchemaWorkday, UISchemaSalesforce } from "./Schemas";
-import { parserAndRenderer } from "./utils";
+import { parserAndRenderer, populateSchema } from "./utils";
 
 export default function Playground() {
 
@@ -39,21 +39,42 @@ export default function Playground() {
   const cardsWorkday = templateWorkday.expand(contextWorkday);
   const cardsSalesforce = templateSalesforce.expand(contextSalesforce);
 
+
+  const populatedMoodleSchema = populateSchema(UISchemaMoodle, MOODLE_COURSES);
+  console.log({populatedMoodleSchema});
+
+  const populatedSalesforceSchema = populateSchema(UISchemaSalesforce, SALESFORCE);
+  console.log({populatedSalesforceSchema});
+
+  const poulateWorkdaySchema = populateSchema(UISchemaWorkday, WORKDAY);
+
   return (
     <PageContainer>
       <Spacing size={30} hasDividers>
       <Spacing size={20} hasDividers>
         <Typography>My Courses</Typography>
-        {parserAndRenderer(cardsMoodle)}
+        {/* Using the adaptive card template */}
+        {/* {parserAndRenderer(cardsMoodle)} */}
+
+        {/* Using the custom template parser */}
+        {parserAndRenderer(populatedMoodleSchema)}
       </Spacing>
 
       <Spacing size={20} hasDividers>
         <Typography>Workday Inbox</Typography>
-        {parserAndRenderer(cardsWorkday)}
+        {/* Using the adaptive card template */}
+        {/* {parserAndRenderer(cardsWorkday)} */}
+
+        {/* Using the custom template parser */}
+        {parserAndRenderer(poulateWorkdaySchema)}
       </Spacing>
 
-      <Typography>Salesforce Report</Typography>
-      {parserAndRenderer(cardsSalesforce)}
+      <Typography>Salesforce Reports</Typography>
+      {/* Using the adaptive card template */}
+      {/* {parserAndRenderer(cardsSalesforce)} */}
+
+      {/* Using the custom template parser */}
+      {parserAndRenderer(populatedSalesforceSchema)}
       </Spacing>
     </PageContainer>
   );
