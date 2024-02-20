@@ -21,5 +21,10 @@ export const MOODLE_COURSES = {
         img: "http://tiny.cc/1thowz",
         completionDate: "Complete by Dec 02, 2023",
       },
+      // {
+      //   title: "Customer Service Excellence 2",
+      //   img: "http://tiny.cc/1thowz",
+      //   completionDate: "Complete by Dec 21, 2024",
+      // },
     ],
   };
